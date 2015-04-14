@@ -30,6 +30,7 @@ import org.w3c.dom.ls.LSSerializer;
 import org.w3c.dom.ls.LSSerializerFilter;
 
 import de.ovgu.featureide.core.CorePlugin;
+import de.ovgu.featureide.core.IFeatureProject;
 import de.ovgu.featureide.core.builder.ComposerExtensionClass;
 import de.ovgu.featureide.fm.core.Feature;
 import de.ovgu.featureide.fm.core.FeatureModel;
@@ -39,9 +40,11 @@ import de.ovgu.featureide.fm.core.configuration.ConfigurationReader;
 public class RosComposer extends ComposerExtensionClass {
 
 	private final LinkedHashSet<String> extensions;
+	public static IFeatureProject IFeatureProject;
 
 	public RosComposer() {
 		extensions = new LinkedHashSet<String>(Arrays.asList("launch"));
+		IFeatureProject = this.featureProject; 
 	}
 	@Override
 	public void performFullBuild(IFile configFile) {
@@ -57,6 +60,7 @@ public class RosComposer extends ComposerExtensionClass {
 		List<Feature> orderFeatures;
 		IFile file;
 
+		IFeatureProject = this.featureProject;
 		try {
 			c = new Configuration(this.featureProject.getFeatureModel());
 			reader = new ConfigurationReader(c);

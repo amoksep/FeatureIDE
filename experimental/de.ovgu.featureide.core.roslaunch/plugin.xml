@@ -22,6 +22,15 @@
                contentTypeId="de.ovgu.featureide.core.roslaunch.contentTypeBinding2">
          </contentTypeBinding>
       </editor>
+      <editor
+            class="de.ovgu.featureide.core.roslaunch.graphconf.ui.GraphConfEditor"
+            contributorClass="de.ovgu.featureide.core.roslaunch.graphconf.actions.FlowActionBarContributor"
+            default="true"
+            extensions="grapconf"
+            icon="icons/view.gif"
+            id="GraphConEditor"
+            name="Graph Config Editor">
+      </editor>
    </extension>
    <extension
          point="de.ovgu.featureide.core.wizard">
