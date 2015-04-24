@@ -1,0 +1,9 @@
+<launch>
+    <!-- run pointcloud_to_laserscan node -->    
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+      <remap from="cloud_in" to="$(arg camera_depth_points)"/>
+      <remap from="scan" to="$(arg scanner_out)" />
+      <param name="transform_tolerance" value="0.1" /> 
+      <!-- <param name="target_frame" value="$(arg tf_base_frame)" /> -->
+    </node>
+</launch>

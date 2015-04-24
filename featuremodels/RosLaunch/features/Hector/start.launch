@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- create map from laserscan without odometry -->
+    <arg name="tf_base_frame" default="$(arg sensor_frame)" />
+    <include file="$(find hector_mapping)/launch/mapping_default.launch">
+     <arg name="base_frame" value="$(arg tf_base_frame)" />
+     <arg name="odom_frame" value="$(arg tf_odom_frame)" />
+     <arg name="pub_map_odom_transform" value="true" />
+     <arg name="scan_topic" value="$(arg scanner_out)" />
+    </include>
+</launch>

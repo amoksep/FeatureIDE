@@ -1,8 +1,6 @@
 package de.ovgu.featureide.core.roslaunch.launch;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.internal.ui.SWTFactory;
@@ -12,7 +10,6 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -93,10 +90,8 @@ public class RosLaunchTab extends AbstractLaunchConfigurationTab {
 	private String openFileDialog() {
 		FileDialog dialog = new FileDialog(getShell(), SWT.MULTI);
 		dialog.setText("Launch File");
-//		dialog.setFileName("model.xml");
 		dialog.setFilterExtensions(new String [] {"*.launch"});
 		dialog.setFilterNames(new String[]{ "Launch *.launch"});
-//		dialog.setFilterPath(fileName.getText());
 		
 		return dialog.open();
 	}

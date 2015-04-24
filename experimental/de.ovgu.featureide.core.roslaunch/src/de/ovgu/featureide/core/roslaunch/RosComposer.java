@@ -27,25 +27,34 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
-import org.w3c.dom.ls.LSSerializerFilter;
 
 import de.ovgu.featureide.core.CorePlugin;
-import de.ovgu.featureide.core.builder.ComposerExtensionClass;
+import de.ovgu.featureide.core.IFeatureProject;
 import de.ovgu.featureide.fm.core.Feature;
 import de.ovgu.featureide.fm.core.FeatureModel;
 import de.ovgu.featureide.fm.core.configuration.Configuration;
 import de.ovgu.featureide.fm.core.configuration.ConfigurationReader;
 
-public class RosComposer extends ComposerExtensionClass {
+/**
+ * compose all Feature to one launch file.
+ * @author janSchum
+ *
+ */
+public class RosComposer{
 
 	private final LinkedHashSet<String> extensions;
+	private IFeatureProject featureProject;
 
-	public RosComposer() {
+	public RosComposer(IFeatureProject _project) {
+		this.featureProject = _project;
 		extensions = new LinkedHashSet<String>(Arrays.asList("launch"));
 	}
-	@Override
-	public void performFullBuild(IFile configFile) {
-		//TODO extra class for compser
+	
+	/**
+	 * all selected features to one launch file.
+	 * @param configFile current config
+	 */
+	public void compose(IFile configFile) {
 		IFolder bFolder;
 		Configuration c;
 		ConfigurationReader reader;
@@ -211,8 +220,6 @@ public class RosComposer extends ComposerExtensionClass {
 		XPath xpath;
 		XPathExpression expr;
 		int len;
-		NodeList args;
-		Element arg;
 		List<Element> listIn;
 		
 		try {
@@ -293,12 +300,6 @@ public class RosComposer extends ComposerExtensionClass {
 		return arg.getAttribute(_attributeName);
 	}
 
-	@Override
-	public Mechanism getGenerationMechanism() {
-		return null;
-	}
-
-	@Override
 	public LinkedHashSet<String> extensions() {
 		return extensions;
 	}

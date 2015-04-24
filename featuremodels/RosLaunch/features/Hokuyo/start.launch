@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- start sensor-->
+    <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo" >
+     <remap from="scan" to="$(arg scanner_out)"/>
+    </node>
+</launch>

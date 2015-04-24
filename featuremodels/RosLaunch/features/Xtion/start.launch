@@ -1,0 +1,9 @@
+<launch>   
+	<!-- only for test if it is will be ignored -> because it is double here and in camera_args -->
+	<arg name="camera" default="camera" />
+	
+	<!-- start sensor-->
+	<include file="$(find openni2_launch)/launch/openni2.launch">
+	   <arg name="camera" default="$(arg camera)"/>
+	</include>
+</launch>

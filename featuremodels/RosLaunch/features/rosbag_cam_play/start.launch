@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="rosbag" type="play" name="rosbag_play" args="/home/georg/Documents/catkin_ws/src/FeatureIDE/rbag_test_2015-03-19-18-25-53.bag" />
+</launch>

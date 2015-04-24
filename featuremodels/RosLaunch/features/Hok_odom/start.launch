@@ -1,0 +1,4 @@
+<launch>   
+	<!-- set argument base_frame to laserscanner -->
+	<arg name="tf_odom_frame" default="laser" />
+</launch>

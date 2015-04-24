@@ -1,0 +1,8 @@
+
+    <!-- run depthimage_to_laserscan node -->
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+      <remap from="image" to="$(arg camera_depth_image)"/>
+      <remap from="scan" to="$(arg scanner_out)" />
+      <param name="scan_time" value="0.0166" />
+      <param name="output_frame_id" value="$(arg tf_base_frame)" />
+     </node>

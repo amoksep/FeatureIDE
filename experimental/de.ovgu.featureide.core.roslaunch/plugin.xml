@@ -11,17 +11,6 @@
             id="de.ovgu.featureide.core.roslaunch.editors.LaunchEditor"
             name="Launch Editor">
       </editor>
-      <editor
-            default="false"
-            id="de.ovgu.featureide.core.roslaunch.editor1"
-            name="name">
-         <contentTypeBinding
-               contentTypeId="de.ovgu.featureide.core.roslaunch.contentTypeBinding1">
-         </contentTypeBinding>
-         <contentTypeBinding
-               contentTypeId="de.ovgu.featureide.core.roslaunch.contentTypeBinding2">
-         </contentTypeBinding>
-      </editor>
    </extension>
    <extension
          point="de.ovgu.featureide.core.wizard">
@@ -35,7 +24,7 @@
    <extension
          point="de.ovgu.featureide.core.composers">
       <composer
-            class="de.ovgu.featureide.core.roslaunch.RosComposer"
+            class="de.ovgu.featureide.core.roslaunch.FeatureRosComposer"
             description="de.ovgu.featureide.core.roslaunch.composer1"
             id="de.ovgu.featureide.roslaunch.composer"
             name="RosLaunchComposer"

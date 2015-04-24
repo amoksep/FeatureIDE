@@ -1,0 +1,5 @@
+<launch>
+    <arg name="filter_in" default="$(arg scanner_out)" />
+    <arg name="filter_out" default="$(arg scanner_out)_filtered" />
+    <!-- <arg name="scan_slam" default="$(arg filter_out)" /> --> 
+</launch>

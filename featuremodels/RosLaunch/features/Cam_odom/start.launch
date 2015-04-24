@@ -1,0 +1,4 @@
+<launch>   
+	<!-- set argument odom_frame to camera -->
+	<arg name="tf_odom_frame" default="$(arg camera)_link" />
+</launch>

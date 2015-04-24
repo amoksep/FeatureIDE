@@ -1,0 +1,4 @@
+<launch>
+    <arg name="scanner_out" default="/scan" />
+    <arg name="scanner_list_topics" default=" $(arg scanner_out) /hokuyo/parameter_updates /diagnostics /hokuyo/parameter_descriptions" />
+</launch>

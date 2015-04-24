@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="0">
+		<struct>
+			<and abstract="true" coordinates="794, 8" mandatory="true" name="Launchfile">
+				<and abstract="true" coordinates="565, 62" name="Nodes">
+					<and abstract="true" coordinates="218, 128" name="SLAM">
+						<and abstract="true" coordinates="-11, 174" mandatory="true" name="Datageneration">
+							<feature coordinates="-244, 239" name="Filter"/>
+							<and abstract="true" coordinates="-128, 242" name="EmScanner">
+								<alt abstract="true" coordinates="-263, 295" mandatory="true" name="Cam_Conversion">
+									<feature coordinates="-228, 347" mandatory="true" name="P2L"/>
+									<feature coordinates="-172, 347" mandatory="true" name="D2L"/>
+								</alt>
+								<and abstract="true" coordinates="-35, 293" mandatory="true" name="Camera">
+									<feature coordinates="-83, 343" name="Xtion"/>
+									<feature coordinates="7, 343" name="Kinect"/>
+									<alt abstract="true" coordinates="91, 343" name="rosbag_cam">
+										<feature coordinates="-64, 392" mandatory="true" name="rosbag_cam_rec"/>
+										<feature coordinates="145, 393" mandatory="true" name="rosbag_cam_play"/>
+									</alt>
+								</and>
+							</and>
+							<and abstract="true" coordinates="241, 245" name="Laserscanner">
+								<feature coordinates="202, 295" name="Hokuyo"/>
+								<alt abstract="true" coordinates="338, 295" name="rosbag_scan">
+									<feature coordinates="286, 347" mandatory="true" name="rosbag_scan_rec"/>
+									<feature coordinates="483, 347" mandatory="true" name="rosbag_scan_play"/>
+								</alt>
+							</and>
+						</and>
+						<alt abstract="true" coordinates="566, 189" mandatory="true" name="Method">
+							<feature coordinates="517, 238" mandatory="true" name="Hector"/>
+							<feature coordinates="627, 240" mandatory="true" name="Gmapping"/>
+						</alt>
+					</and>
+					<feature coordinates="752, 130" name="rviz"/>
+				</and>
+				<and abstract="true" coordinates="1073, 100" hidden="true" name="Agruments">
+					<and abstract="true" coordinates="1032, 152" name="TF">
+						<alt abstract="true" coordinates="882, 205" name="Base">
+							<feature coordinates="796, 254" mandatory="true" name="Hok_base"/>
+							<feature coordinates="916, 254" mandatory="true" name="Cam_base"/>
+						</alt>
+						<alt abstract="true" coordinates="1137, 209" name="Odom">
+							<feature coordinates="1048, 256" mandatory="true" name="Hok_odom"/>
+							<feature coordinates="1192, 253" mandatory="true" name="Cam_odom"/>
+						</alt>
+					</and>
+					<and abstract="true" coordinates="1422, 221" name="Topics">
+						<feature coordinates="1221, 316" name="Filter_In_Out"/>
+						<feature coordinates="1384, 319" name="Scan_SLAM"/>
+						<feature coordinates="1526, 321" name="Scanner_out"/>
+						<feature coordinates="1679, 321" name="Cam_topics"/>
+					</and>
+					<feature coordinates="1544, 211" name="Camera_Name"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule coordinates="658, 468">
+				<imp>
+					<var>Laserscanner</var>
+					<conj>
+						<var>Hok_base</var>
+						<var>Hok_odom</var>
+					</conj>
+				</imp>
+			</rule>
+			<rule coordinates="664, 518">
+				<imp>
+					<var>SLAM</var>
+					<conj>
+						<var>Scan_SLAM</var>
+						<var>Scanner_out</var>
+					</conj>
+				</imp>
+			</rule>
+			<rule coordinates="661, 574">
+				<imp>
+					<var>Cam_Conversion</var>
+					<conj>
+						<var>Cam_topics</var>
+						<var>Base</var>
+					</conj>
+				</imp>
+			</rule>
+			<rule coordinates="661, 649">
+				<imp>
+					<var>Filter</var>
+					<var>Filter_In_Out</var>
+				</imp>
+			</rule>
+			<rule coordinates="661, 674">
+				<imp>
+					<var>rosbag_cam_play</var>
+					<conj>
+						<not>
+							<var>Xtion</var>
+						</not>
+						<not>
+							<var>Kinect</var>
+						</not>
+					</conj>
+				</imp>
+			</rule>
+			<rule coordinates="650, 712">
+				<imp>
+					<var>Camera</var>
+					<conj>
+						<var>Cam_base</var>
+						<conj>
+							<var>Cam_odom</var>
+							<var>Camera_Name</var>
+						</conj>
+					</conj>
+				</imp>
+			</rule>
+			<rule coordinates="656, 753">
+				<imp>
+					<disj>
+						<var>Cam_topics</var>
+						<disj>
+							<var>Cam_base</var>
+							<var>Cam_odom</var>
+						</disj>
+					</disj>
+					<var>Camera_Name</var>
+				</imp>
+			</rule>
+			<rule coordinates="656, 778">
+				<imp>
+					<var>rosbag_scan_play</var>
+					<not>
+						<var>Hokuyo</var>
+					</not>
+				</imp>
+			</rule>
+			<rule coordinates="656, 803">
+				<imp>
+					<var>rosbag_scan_rec</var>
+					<var>Hokuyo</var>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="true">
+			<feature name="Scanner_out"/>
+			<feature name="Filter_In_Out"/>
+			<feature name="Camera_Name"/>
+			<feature name="Scan_SLAM"/>
+			<feature name="Cam_base"/>
+			<feature name="Hok_base"/>
+			<feature name="Hok_odom"/>
+			<feature name="Cam_odom"/>
+			<feature name="Cam_topics"/>
+			<feature name="Xtion"/>
+			<feature name="Kinect"/>
+			<feature name="rosbag_cam_rec"/>
+			<feature name="rosbag_cam_play"/>
+			<feature name="Filter"/>
+			<feature name="Hokuyo"/>
+			<feature name="P2L"/>
+			<feature name="D2L"/>
+			<feature name="rosbag_scan_rec"/>
+			<feature name="rosbag_scan_play"/>
+			<feature name="Hector"/>
+			<feature name="Gmapping"/>
+			<feature name="rviz"/>
+		</featureOrder>
+	</featureModel>

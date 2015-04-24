@@ -1,0 +1,4 @@
+<launch>   
+	<!-- set argument camera to Xtion as user want to use it -->
+	<arg name="camera" default="camera" />
+</launch>

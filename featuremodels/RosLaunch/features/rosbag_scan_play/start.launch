@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="rosbag" type="play" name="rosbag_play" args="$(find FeatureIDE)/rbag_test_2015-03-19-18-53-57.bag" />
+</launch>

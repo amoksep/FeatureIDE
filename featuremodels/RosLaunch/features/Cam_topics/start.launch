@@ -1,0 +1,7 @@
+<launch>
+	<!-- define camera topics depending on chosen camera -->
+    <arg name="camera_depth_points" default="/$(arg camera)/depth/points" />
+    <arg name="camera_depth_image" default="/$(arg camera)/depth/image_raw" />
+    <arg name="camera_info" default="/$(arg camera)/depth/camera_info" />
+    <arg name="camera_list_topics" default="$(arg camera_depth_points) $(arg camera_depth_image) $(arg camera_info)"/>
+</launch>
