@@ -11,12 +11,12 @@ public class FeatureRosComposer extends ComposerExtensionClass {
 	private RosComposer composer;
 
 	public FeatureRosComposer() {
-		this.composer = new RosComposer(this.featureProject);
+		this.composer = new RosComposer();
 	}
 
 	@Override
 	public void performFullBuild(IFile configFile) {
-		this.composer.compose(configFile);
+		this.composer.compose(configFile, this.featureProject);
 	}
 
 	@Override

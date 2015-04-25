@@ -43,10 +43,8 @@ import de.ovgu.featureide.fm.core.configuration.ConfigurationReader;
 public class RosComposer{
 
 	private final LinkedHashSet<String> extensions;
-	private IFeatureProject featureProject;
 
-	public RosComposer(IFeatureProject _project) {
-		this.featureProject = _project;
+	public RosComposer() {
 		extensions = new LinkedHashSet<String>(Arrays.asList("launch"));
 	}
 	
@@ -54,7 +52,7 @@ public class RosComposer{
 	 * all selected features to one launch file.
 	 * @param configFile current config
 	 */
-	public void compose(IFile configFile) {
+	public void compose(IFile configFile, IFeatureProject _project) {
 		IFolder bFolder;
 		Configuration c;
 		ConfigurationReader reader;
@@ -67,7 +65,7 @@ public class RosComposer{
 		IFile file;
 
 		try {
-			c = new Configuration(this.featureProject.getFeatureModel());
+			c = new Configuration(_project.getFeatureModel());
 			reader = new ConfigurationReader(c);
 			reader.readFromFile(configFile);
 			selectedFeatures = c.getSelectedFeatures();
@@ -77,7 +75,7 @@ public class RosComposer{
 				DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 						.newInstance();
 				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-				FeatureModel featureModel = featureProject.getFeatureModel();
+				FeatureModel featureModel = _project.getFeatureModel();
 				List<String> featureOrderList = featureModel
 						.getFeatureOrderList();
 				orderFeatures = new ArrayList<Feature>(selectedFeatures.size());
@@ -98,7 +96,7 @@ public class RosComposer{
 					if (feature.isAbstract()) {
 						continue;
 					}
-					IFolder featureFolder = featureProject.getSourceFolder()
+					IFolder featureFolder = _project.getSourceFolder()
 							.getFolder(feature.getName());
 					for (IResource res : featureFolder.members()) {
 
@@ -156,7 +154,7 @@ public class RosComposer{
 				/*
 				 * build the files from the document
 				 */
-				bFolder = featureProject.getBuildFolder();
+				bFolder = _project.getBuildFolder();
 				if (!bFolder.exists()) {
 					bFolder.create(false, true, null);
 				}
